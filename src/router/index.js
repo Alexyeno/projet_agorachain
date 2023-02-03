@@ -1,16 +1,44 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import LandingPage from '../views/LandingPage.vue'
+
 
 const router = createRouter({
 	history: createWebHistory(),
 	routes: [
 		{
 			path: '/',
-			component: Home
+			component: LandingPage,
+			name: 'LandingPage',
 		},
 		{
-			path: '/log-in',
-			component: () => import('../views/Login.vue')
+			path: '/Authentification',
+			component: () => import('../views/Authentification.vue'),
+			name: 'Authentification',
+		},
+		{
+			path: '/Accueil',
+			component: () => import('../views/Accueil.vue'),
+			name: 'Accueil',
+		},
+		{
+			path: '/Creation',
+			component: () => import('../views/Creation.vue'),
+			name: 'Creation',
+		},
+		{
+			path: '/Vote',
+			component: () => import('../views/Vote.vue'),
+			name: 'Vote',
+		},
+		{
+			path: '/Historique',
+			component: () => import('../views/Historique.vue'),
+			name: 'Historique',
+		},
+		{
+			path: '/Parametres',
+			component: () => import('../views/Parametres.vue'),
+			name: 'Parametres',
 		},
 	],
 })

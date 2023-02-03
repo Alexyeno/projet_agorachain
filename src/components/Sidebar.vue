@@ -12,34 +12,34 @@
 
 		<h3>Menu</h3>
 		<div class="menu">
-			<router-link to="/" class="button">
+			<router-link to="/Accueil" class="button">
 				<span class="material-icons">home</span>
-				<span class="text">Home</span>
+				<span class="text">Accueil</span>
 			</router-link>
-			<router-link to="/about" class="button">
+			<router-link to="/Creation" class="button">
 				<span class="material-icons">add</span>
-				<span class="text">Create a vote</span>
+				<span class="text">Créer un vote</span>
 			</router-link>
-			<router-link to="/vote" class="button">
+			<router-link to="/Vote" class="button">
 				<span class="material-icons">how_to_vote</span>
-				<span class="text">Vote</span>
+				<span class="text">Voter</span>
 			</router-link>
-			<router-link to="/history" class="button">
+			<router-link to="/Historique" class="button">
 				<span class="material-icons">summarize</span>
-				<span class="text">History</span>
+				<span class="text">Historique</span>
 			</router-link>
-			<router-link to="/account" class="button">
+			<router-link to="/Parametres" class="button">
 				<span class="material-icons">manage_accounts</span>
-				<span class="text">History</span>
+				<span class="text">Paramètres</span>
 			</router-link>
 		</div>
 
 		<div class="flex"></div>
 		
 		<div class="menu">
-			<router-link to="/log-in" class="button">
+			<router-link to="/Authentification" class="button">
 				<span class="material-icons">logout</span>
-				<span class="text">Log Out</span>
+				<span class="text">Déconnexion</span>
 			</router-link>
 		</div>
 	</aside>

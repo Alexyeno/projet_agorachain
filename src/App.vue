@@ -1,6 +1,6 @@
 <template>
 	<div class="app">
-		<div v-if="mode == 'logged'">
+		<div class="Sidebar" v-if= "$route.name !== 'Authentification'&& $route.name !=='LandingPage'">
     <!-- Sidebar -->
 		<Sidebar />
     </div>
@@ -10,23 +10,10 @@
 </template>
 
 <script setup>
-import Sidebar from './components/Sidebar.vue'
+import Sidebar from './components/Sidebar.vue';
 </script>
 
-<script>
-export default {
-  name: 'Login',
-  data: function () {
-    return {
-      mode: 'login',
-      email: '',
-      prenom: '',
-      nom: '',
-      password: '',
-    }
-  },
-}
-</script>
+
 <style lang="scss">
 :root {
 	--primary: #8347E5;
@@ -35,6 +22,7 @@ export default {
 	--dark: #1e293b;
 	--dark-alt: #334155;
 	--light: #f1f5f9;
+  --light-alt: #f0eafa;
 	--sidebar-width: 300px;
 }
 
@@ -45,6 +33,13 @@ export default {
 	font-family: 'Fira sans', sans-serif;
 }
 
+.connexion{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
 .card {
   max-width: 100%;
   width: 540px;
@@ -52,7 +47,7 @@ export default {
   border-radius: 16px;
   padding:32px;
   max-height: 100%;
-  height: fit-content;				
+  height: fit-content;
 }
 .card__title {
   text-align:center;
@@ -94,12 +89,8 @@ export default {
     cursor:not-allowed;
     opacity: 0.8;;
   }
-
 body {
 	background: var(--light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 button {
@@ -109,14 +100,11 @@ button {
 	outline: none;
 	background: none;
 }
-
 .app {
 	display: flex;
-
 	main {
 		flex: 1 1 0;
 		padding: 2rem;
-
 		@media (max-width: 1024px) {
 			padding-left: 6rem;
 		}
