@@ -7,12 +7,12 @@
 </div>
 		<div class="parameters">
 			<div class="subParameters">
-				<input  class="parameters__input" type="text" placeholder="Nom du vote"/>
-				<input  class="parameters__input" type="text" placeholder="Organisation"/>
+				<input  class="parameters__input input1" type="text" placeholder="Nom du vote"/>
+				<input  class="parameters__input input2" type="text" placeholder="Date du vote"/>
 			</div>
 			<div class="subParameters">
-				<input  class="parameters__input" type="text" placeholder="Date du vote"/>
-				<input  class="parameters__input" type="text" placeholder="Durée du vote"/>
+				<input  class="parameters__input input3" type="text" placeholder="Organisation"/>
+				<input  class="parameters__input input4" type="text" placeholder="Durée du vote"/>
 			</div>
 		</div>
 <div class="sub_title">
