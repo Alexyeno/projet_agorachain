@@ -1,6 +1,7 @@
 <template>
 	<div class="app">
 		<div class="Sidebar" v-if= "$route.name !== 'Authentification'&& $route.name !=='LandingPage'">
+    <!-- <div class="Sidebar" v-if="mode == 'logged'"> -->
     <!-- Sidebar -->
 		<Sidebar />
     </div>

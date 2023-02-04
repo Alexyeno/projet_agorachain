@@ -5,17 +5,21 @@
 		</div>
 		<div class="card">
 		<h1 class="card__title" v-if="mode == 'login'">Connexion</h1>
-		<h1 class="card__title" v-else>Inscription</h1>
+		<h1 class="card__title" v-if="mode == 'create'">Inscription</h1>
+    <h1 class="card__title" v-if="mode == 'without'">Rejoindre un salon de vote</h1>
 		<p class="card__subtitle" v-if="mode == 'login'">Tu n'as pas encore de compte ? <span class="card__action" @click="switchToCreateAccount()">Créer un compte</span></p>
-		<p class="card__subtitle" v-else>Tu as déjà un compte ? <span class="card__action" @click="switchToLogin()">Se connecter</span></p>
-		<div class="form-row">
+		<p class="card__subtitle" v-if="mode== 'create'">Tu as déjà un compte ? <span class="card__action" @click="switchToLogin()">Se connecter</span></p>
+		<div v-if="mode == 'without'" class="form-row">
+			<input class="form-row__input" type="text" placeholder="Code du salon"/>
+		</div>
+    <div class="form-row">
 			<input v-model="email" class="form-row__input" type="text" placeholder="Adresse mail"/>
 		</div>
 		<div class="form-row" v-if="mode == 'create'">
 			<input v-model="prenom" class="form-row__input" type="text" placeholder="Prénom"/>
 			<input v-model="nom" class="form-row__input" type="text" placeholder="Nom"/>
 		</div>
-		<div class="form-row">
+		<div v-if="mode=='login' || mode=='create'" class="form-row">
 			<input v-model="password" class="form-row__input" type="password" placeholder="Mot de passe"/>
 		</div>
 		<div class="form-row" v-if="mode == 'login' && status == 'error_login'">
@@ -29,19 +33,31 @@
 			<span v-if="status == 'loading'">Connexion en cours...</span>
 			<span v-else>Connexion</span>
 			</button>
-			<button @click="createAccount()" class="buttonForm" :class="{'buttonForm--disabled' : !validatedFields}" v-else>
+			<button @click="createAccount()" class="buttonForm" :class="{'buttonForm--disabled' : !validatedFields}" v-if="mode == 'create'">
 			<span v-if="status == 'loading'">Création en cours...</span>
 			<span v-else>Créer mon compte</span>
 			</button>
+      <button @click="loginWOAccount()" class="buttonForm" :class="{'buttonForm--disabled' : !validatedFields}" v-if="mode == 'without'">
+			<span v-if="status == 'loading'">Connexion en cours...</span>
+			<span v-else>Se connecter</span>
+			</button>
+    
+      <button v-if="mode=='login'" @click="switchToWithoutAccount()" class="buttonForm">
+				<span>Je souhaite voter sans créer de compte</span>
+			</button>
 	<!-- Bouton à supprimer, pass sans back -->
-			<button @click="next()" class="buttonForm">
+      <button v-if="mode=='login' || mode=='create'" @click="switchTologged();next()" class="buttonForm">
 				<span>Passer</span>
 			</button>
+      <button v-if="mode=='without'" @click="switchTologged();nextWOAccount()" class="buttonForm">
+				<span>Passer</span>
+			</button>
+  	<!-- Bouton à supprimer, pass sans back -->
 		</div>
 	</div>
 </div>
 
-  </template>
+</template>
 
 <script setup>
 import longLogo from '../assets/longLogo.svg'
@@ -87,14 +103,23 @@ export default {
     switchToCreateAccount: function () {
       this.mode = 'create';
     },
+    switchTologged: function () {
+      this.mode = 'logged';
+    },
     switchToLogin: function () {
       this.mode = 'login';
+    },
+    switchToWithoutAccount: function () {
+      this.mode = 'without';
     },
 	/* Boutton à supprimer, pass sans background */
 	next: function(){
 		this.$router.push('/Accueil');
 	},
-	
+  nextWOAccount: function(){
+		this.$router.push('/VoteRoom');
+	},
+	/* Boutton à supprimer, pass sans background */
     login: function () {
       const self = this;
       this.$store.dispatch('login', {
@@ -119,9 +144,20 @@ export default {
         console.log(error);
       })
     },
+    loginWOAccount: function () {
+      const self = this;
+      this.$store.dispatch('loginWOAccount', {
+        email: this.email,
+      }).then(function () {
+        self.$router.push('/Vote');
+      }, function (error) {
+        console.log(error);
+      })
+    }
   }
 }
 </script>
+
 <style scoped>
 .longLogo {
   width: 100%;
@@ -130,7 +166,6 @@ export default {
   margin-bottom: 32px;
   margin-top: 50px;
 }
-
 .form-row {
   display: flex;
   margin: 16px 0px;
@@ -151,6 +186,4 @@ export default {
 .form-row__input::placeholder {
   color:#aaaaaa;
 }
-
-
 </style>>

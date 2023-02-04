@@ -12,7 +12,7 @@
 export default ({
 methods: {
     next: function () {
-	this.$router.push('/Login');
+	this.$router.push('/Authentification');
 }
 }
 })

@@ -26,6 +26,11 @@ const router = createRouter({
 			name: 'Creation',
 		},
 		{
+			path: '/CreationTerminee',
+			component: () => import('../views/CreationTerminee.vue'),
+			name: 'CreationTerminee',
+		},
+		{
 			path: '/Vote',
 			component: () => import('../views/Vote.vue'),
 			name: 'Vote',
