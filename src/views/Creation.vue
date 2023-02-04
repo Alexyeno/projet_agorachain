@@ -18,28 +18,29 @@
 <div class="sub_title">
 	<h2 class="sub__title">Questions</h2>
 </div>
-				<div class = "global_form" v-for="(section, sectionIndex) in sections">
-					<div v-for="(question, questionIndex) in section.questions">
-						<div class = "form-row">
-							<input class="question__input input" type ="texte" v-model="question.item" placeholder="Question" :sectionIndex="sectionIndex">
-							<span class="material-icons" v-if="section.questions.length>1" style="cursor:pointer" @click="removeQ(sectionIndex, questionIndex)">close</span>
-						</div>
-					<div class = "form form_answer" v-for="(section, sectionIndex) in sections">
-							<div class = "form-row" v-for="(answer, answerIndex) in section.answers">
-							<input class="answer__input input" type ="texte" v-model="answer.item" placeholder="Réponse" :sectionIndex="sectionIndex">
-							<span class="material-icons" v-if="section.answers.length>1" style="cursor:pointer" @click="removeA(sectionIndex, answerIndex)">close</span>
-					</div>
-					<div class="controls">
-      <a class="a_plus" @click="addA(sectionIndex, questionIndex)"><i ></i> Ajouter une réponse</a>
-    
-					</div>
-					</div>
-				</div>
-						
-					<div class="controls">
+<div class="global_form" v-for="(section, sectionIndex) in sections">
+      <div v-for="(question, questionIndex) in section.questions">
+        <div class="form-row">
+          <input class="question__input input" type="text" v-model="question.question" placeholder="Question" :sectionIndex="sectionIndex">
+          <span class="material-icons" v-if="section.questions.length > 1" style="cursor:pointer" @click="removeQ(sectionIndex, questionIndex)">close</span>
+        </div>
+        <div class="form form_answer">
+          <div class="form-row" v-for="(answer, answerIndex) in question.answers">
+            <input class="answer__input input" type="text" v-model="answer.answer" placeholder="Réponse">
+            <span class="material-icons" v-if="question.answers.length > 1" style="cursor:pointer" @click="removeA(sectionIndex, questionIndex, answerIndex)">close</span>
+          </div>
+        </div>
+        <div class="controls">
+          <a class="a_plus" @click="addA(sectionIndex, questionIndex)">
+            <i></i> Ajouter une réponse
+          </a>
+        </div>
+      </div>
+              
+    <div class="controls">
       <a class="q_plus" @click="addQ(sectionIndex)"><i ></i> Ajouter une question</a>
     </div>
-				</div>
+  </div>
 	
 					<div class="sub_title">
 		<h2 class="sub__title">Participants</h2>
@@ -68,44 +69,59 @@
 		name: 'Create',
   data() {
     return {
-      data: {
-        question: "",
-		participant: "",
-		answer: "",
-      },
-      sections: [{
-        questions: [{item: ""}],
-		participants: [{item: ""}],
-		answers: [{item: ""}]
-      }]
-	}
+  data: {
+    question: "",
+    participant: "",
+    answer: ""
+  },
+  sections: [
+    {
+      questions: [
+        {
+          question: "",
+          answers: [
+            {
+              answer: ""
+            }
+          ]
+        }
+      ],
+      participants: [
+        {
+          participant: ""
+        }
+      ]
+    }
+  ]
+}
     },
 		methods: {
 			Created: function(){
 				this.$router.push('/CreationTerminee');
 			},
 		
-	addQ(id) {
-      this.sections[id].questions.push({item: ''});
+			addQ(id) {
+      this.sections[id].questions.push({question: '', answers: [{answer: ''}]});
     },
     removeQ(sectionIndex, questionIndex) {
       this.sections[sectionIndex].questions.splice(questionIndex, 1);
     },
 	addP(id) {
-      this.sections[id].participants.push({item: ''});
+      this.sections[id].participants.push({participant: ''});
     },
     removeP(sectionIndex, participantIndex) {
       this.sections[sectionIndex].participants.splice(participantIndex, 1);
     },
-	addA(id) {
-      this.sections[id].answers.push({item: ''});
-    },
-    removeA(sectionIndex, answerIndex) {
-      this.sections[sectionIndex].answers.splice(answerIndex, 1);
-    },
-    }
-
+	addA(sectionIndex, questionIndex) {
+        this.sections[sectionIndex].questions[questionIndex].answers.push({ answer: '' });
+		
+      },
+	  removeA(sectionIndex, questionIndex, answerIndex) {
+  this.sections[sectionIndex].questions[questionIndex].answers.splice(answerIndex, 1);
 }
+}
+}
+
 
 	
 </script>
