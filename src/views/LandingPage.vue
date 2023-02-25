@@ -1,8 +1,8 @@
 <template>
 	<main id="Home-page">
 		<div class="first Section">
-			<button @click="next()" class="buttonForm topButton">
-				<span>S'inscrire</span>
+			<button @click="login()" class="buttonForm topButton">
+				<span>Se connecter</span>
 			</button>
 			<div class="longLogo">
 				<img src="../assets/longLogo.svg" alt="AgoraChainLogo" /> 
@@ -16,7 +16,7 @@
 			</div>
 			</div>
 			<div class="callToAction">
-				<button @click="next()" class="buttonForm callToActionButton">
+				<button @click="signin()" class="buttonForm callToActionButton">
 					<span>S'inscrire</span>
 				</button>
 			</div>
@@ -73,8 +73,14 @@
 export default ({
 
 methods: {
-    next: function () {
+    login: function () {
 	this.$router.push('/Authentification');
+},
+signin: function () {
+  this.$router.push({ 
+    path: '/Authentification',
+    query: { mode: 'create' }
+  });
 }
 }
 })

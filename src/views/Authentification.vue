@@ -76,6 +76,11 @@ export default {
       password: '',
     }
   },
+  created() {
+    if (this.$route.query.mode === 'create') {
+      this.mode = 'create';
+    }
+  },
   mounted: function () {
     if (this.$store.state.user.userId != -1) {
       this.$router.push('/profile');
