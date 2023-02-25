@@ -1,7 +1,7 @@
 <template>
 		<div class="connexion">
 		<div class="longLogo">
-				<img :src="longLogo" alt="AgoraChainLogo" /> 
+				<img :src="longLogo" alt="AgoraChainLogo"/> 
 		</div>
 		<div class="card">
 		<h1 class="card__title" v-if="mode == 'login'">Connexion</h1>
@@ -62,6 +62,7 @@
 <script setup>
 import longLogo from '../assets/longLogo.svg'
 </script>
+
 <script>
 import { mapState } from 'vuex'
 export default {
@@ -120,26 +121,73 @@ export default {
 		this.$router.push('/VoteRoom');
 	},
 	/* Boutton à supprimer, pass sans background */
-    login: function () {
+  
+
+login: function () {
+const self = this;
+const userData = {
+email: this.email,
+password: this.password
+};
+
+fetch("http://localhost:8080/api/auth/signin", {
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify(userData)
+})
+.then(function (response) {
+if (!response.ok) {
+throw new Error(response.statusText);
+}
+return response.json();
+})
+.then(function (data) {
+localStorage.setItem("user", JSON.stringify(data));
+self.$router.push('/Accueil');
+})
+.catch(function (error) {
+console.log(error);
+});
+},
+
+createAccount: function () {
+const self = this;
+const userData = {
+username: this.nom,
+email: this.email,
+password: this.password,
+roles: ["user"]
+};
+
+fetch("http://localhost:8080/api/auth/signup", {
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify(userData)
+})
+.then(function (response) {
+if (!response.ok) {
+throw new Error(response.statusText);
+}
+return response.json();
+})
+.then(function (data) {
+localStorage.setItem("user", JSON.stringify(data));
+self.login();
+})
+.catch(function (error) {
+console.log(error);
+});
+},
+    loginWOAccount: function () {
       const self = this;
-      this.$store.dispatch('login', {
+      this.$store.dispatch('loginWOAccount', {
         email: this.email,
-        password: this.password,
       }).then(function () {
-        self.$router.push('/Accueil');
-      }, function (error) {
-        console.log(error);
-      })
-    },
-    createAccount: function () {
-      const self = this;
-      this.$store.dispatch('createAccount', {
-        email: this.email,
-        nom: this.nom,
-        prenom: this.prenom,
-        password: this.password,
-      }).then(function () {
-        self.login();
+        self.$router.push('/Vote');
       }, function (error) {
         console.log(error);
       })
