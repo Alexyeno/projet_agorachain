@@ -30,11 +30,11 @@
       
       </form>
       <button @click="Validate()" class="buttonForm"><span>Enregistrer</span></button>
-      
-    </div>
-    <div id="popUp" v-if="showPopup">
+      <div id="popUp" v-if="showPopup">
          Votre vote a été enregistré
       </div>
+    </div>
+    
   </template>
   
   <script>
