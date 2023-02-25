@@ -27,6 +27,16 @@
 			ToHistory: function(){
 				this.$router.push('/Historique');
 			},
+			logged() {
+   			 	if (this.$route.query.mode === 'logged') {
+     			 this.mode = 'logged';
+    			}
+			},
+			without() {
+   			 	if (this.$route.query.mode === 'without') {
+     			 this.mode = 'without';
+    			}
+			}
 		}
 	}
 </script>

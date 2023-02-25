@@ -13,15 +13,16 @@
 </template>
 
 <script>
-	export default {
-		name: 'Vote',
-		methods: {
-			},
-			ToRoom: function(){
-				this.$router.push('/SalonDeVote');
-			},
-	}
+export default {
+  name: 'Vote',
+  methods: {
+    ToRoom() {
+      this.$router.push('/SalonDeVote');
+    },
+  },
+}
 </script>
+
 
 <style scoped>
 .form-row {

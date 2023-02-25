@@ -49,7 +49,7 @@
       <button v-if="mode=='login' || mode=='create'" @click="switchTologged();next()" class="buttonForm">
 				<span>Passer</span>
 			</button>
-      <button v-if="mode=='without'" @click="switchTologged();nextWOAccount()" class="buttonForm">
+      <button v-if="mode=='without'" @click="switchToWithoutAccount();next()" class="buttonForm">
 				<span>Passer</span>
 			</button>
   	<!-- Bouton à supprimer, pass sans back -->
@@ -81,6 +81,7 @@ export default {
       this.mode = 'create';
     }
   },
+  
   mounted: function () {
     if (this.$store.state.user.userId != -1) {
       this.$router.push('/profile');
@@ -118,14 +119,11 @@ export default {
     switchToWithoutAccount: function () {
       this.mode = 'without';
     },
-	/* Boutton à supprimer, pass sans background */
+	/* Boutton à supprimer, pass sans backg*/
 	next: function(){
-		this.$router.push('/Accueil');
-	},
-  nextWOAccount: function(){
-		this.$router.push('/VoteRoom');
-	},
-	/* Boutton à supprimer, pass sans background */
+		this.$router.push('/Accueil')
+  },
+	/* Boutton à supprimer, pass sans back */
   
 
 login: function () {
@@ -150,7 +148,10 @@ return response.json();
 })
 .then(function (data) {
 localStorage.setItem("user", JSON.stringify(data));
-self.$router.push('/Accueil');
+self.$router.push({
+    path: '/Accueil',
+    query: { mode: 'logged' }
+    });
 })
 .catch(function (error) {
 console.log(error);

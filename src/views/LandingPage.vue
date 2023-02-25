@@ -37,6 +37,9 @@
 				<img src="../assets/headerImage.png" class = "presentationImage"  alt="presentationImage" /> 
 			</div>
 		</div>
+		<div>
+			<p class = 'titlePrice'>Nos prix</p>
+		</div>
 		</div>
 
 		<div class="third Section">
@@ -201,6 +204,15 @@ signin: function () {
  	width: 3px;
 	height: 250px;
 	background-color: var(--light);
+}
+.titlePrice{
+	font-size: 70px;
+	font-weight: 600;
+	color: var(--primary);
+	text-align: left;
+	padding: 30px 20% 0px 20%;
+	position: relative;
+  	top: 85px;
 }
 </style>
 

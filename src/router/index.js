@@ -45,6 +45,11 @@ const router = createRouter({
 			component: () => import('../views/Parametres.vue'),
 			name: 'Parametres',
 		},
+		{
+			path: '/SalonDeVote',
+			component: () => import('../views/SalonDeVote.vue'),
+			name: 'SalonDeVote',
+		},
 	],
 })
 

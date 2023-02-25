@@ -1,17 +1,31 @@
 <template>
 	<div class="app">
-		<div class="Sidebar" v-if= "$route.name !== 'Authentification'&& $route.name !=='LandingPage'">
-    <!-- <div class="Sidebar" v-if="mode == 'logged'"> -->
+		<div class="Sidebar" v-if= "$route.name !== 'Authentification'&& $route.name !=='LandingPage'&& mode!=='without'">
     <!-- Sidebar -->
 		<Sidebar />
     </div>
 		<!-- Content -->
 		<router-view />
+    
 	</div>
 </template>
 
 <script setup>
 import Sidebar from './components/Sidebar.vue';
+</script>
+
+<script>
+export default {
+  data: function () {
+    return {
+      mode: 'login',
+      email: '',
+      prenom: '',
+      nom: '',
+      password: '',
+    }
+  },
+}
 </script>
 
 
