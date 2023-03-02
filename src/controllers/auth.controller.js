@@ -14,6 +14,7 @@ exports.signup = (req, res) => {
     email: req.body.email,
     nom: req.body.nom,
     prenom: req.body.prenom,
+    private: req.body.private,
     password: bcrypt.hashSync(req.body.password, 8)
   })
     .then(user => {
@@ -77,9 +78,26 @@ exports.signin = (req, res) => {
           id: user.id,
           email: user.email,
           roles: authorities,
-          accessToken: token
+          accessToken: token,
+          private: user.private,
+          nom: user.nom,
+          prenom: user.prenom,
         });
       });
+    })
+    .catch(err => {
+      res.status(500).send({ message: err.message });
+    });
+};
+
+exports.getprivate = (req, res) => {
+  User.findOne({
+    where: {
+      email: req.body.email
+    }
+  })
+    .then(user => {
+      res.status(200).send({ private: user.private });
     })
     .catch(err => {
       res.status(500).send({ message: err.message });

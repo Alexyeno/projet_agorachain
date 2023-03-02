@@ -26,7 +26,7 @@ const router = createRouter({
 			name: 'Creation',
 		},
 		{
-			path: '/CreationTerminee',
+			path: '/CreationTerminee/:id',
 			component: () => import('../views/CreationTerminee.vue'),
 			name: 'CreationTerminee',
 		},
@@ -46,7 +46,7 @@ const router = createRouter({
 			name: 'Parametres',
 		},
 		{
-			path: '/SalonDeVote',
+			path: '/SalonDeVote/:id',
 			component: () => import('../views/SalonDeVote.vue'),
 			name: 'SalonDeVote',
 		},

@@ -41,7 +41,7 @@ require('./routes/user.routes')(app);
 
 
 function initial() {
-  Role.create({
+/*  Role.create({
     id: 1,
     name: "user"
   });
@@ -54,6 +54,6 @@ function initial() {
   Role.create({
     id: 3,
     name: "admin"
-  });
+  });*/
 }
 

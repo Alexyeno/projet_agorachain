@@ -15,50 +15,50 @@
 </template>
 
 <script>
-	export default {
-		name: 'Accueil',
-		methods: {
-			ToCreate: function(){
-				this.$router.push('/Creation');
-			},
-			ToVote: function(){
-				this.$router.push('/Vote');
-			},
-			ToHistory: function(){
-				this.$router.push('/Historique');
-			},
-			logged() {
-   			 	if (this.$route.query.mode === 'logged') {
-     			 this.mode = 'logged';
-    			}
-			},
-			without() {
-   			 	if (this.$route.query.mode === 'without') {
-     			 this.mode = 'without';
-    			}
+export default {
+	name: 'Accueil',
+	methods: {
+		ToCreate: function () {
+			this.$router.push('/Creation');
+		},
+		ToVote: function () {
+			this.$router.push('/Vote');
+		},
+		ToHistory: function () {
+			this.$router.push('/Historique');
+		},
+		logged() {
+			if (this.$route.query.mode === 'logged') {
+				this.mode = 'logged';
+			}
+		},
+		without() {
+			if (this.$route.query.mode === 'without') {
+				this.mode = 'without';
 			}
 		}
 	}
+}
 </script>
 
 <style scoped>
 .buttonForm:hover {
-    cursor:pointer;
-    opacity: 1.5;
+	cursor: pointer;
+	opacity: 1.5;
 	background-color: var(--light-alt);
-  }
+}
 
-  .buttonForm {
-    background: var(--light);
-    color:var(--dark);
-    border-radius: 8px;
-    font-weight: 800;
-    font-size: 15px;
-    border: none;
-    width: 100%;
-    padding: 25px;
-    transition: .4s background-color;
+.buttonForm {
+	background: var(--light);
+	color: var(--dark);
+	border-radius: 8px;
+	font-weight: 800;
+	font-size: 15px;
+	border: none;
+	width: 100%;
+	padding: 25px;
+	transition: .4s background-color;
 	margin-top: 15px;
 	margin-bottom: 15px;
-  }
+}
 </style>

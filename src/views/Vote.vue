@@ -3,7 +3,7 @@
 	<div class="card">
 	<h2 class="card__title">Rejoindre un salon de vote</h2>
 	<div class="form-row">
-		<input class="form-row__input" type="text" placeholder="Code du salon"/>
+		<input class="form-row__input" v-model="text" type="text" placeholder="Code du salon"/>
 	</div>
 		<button @click="ToRoom()" class="buttonForm">
 			<span>Continuer</span>
@@ -15,9 +15,14 @@
 <script>
 export default {
   name: 'Vote',
+  data() {
+    return {
+      text: '',
+    };
+  },
   methods: {
     ToRoom() {
-      this.$router.push('/SalonDeVote');
+      this.$router.push('/SalonDeVote/' + this.text);
     },
   },
 }

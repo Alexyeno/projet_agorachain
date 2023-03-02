@@ -1,0 +1,324 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_vote_id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_proposition",
+				"type": "string"
+			}
+		],
+		"name": "addProposition",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_vote_id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address[]",
+				"name": "_voters",
+				"type": "address[]"
+			}
+		],
+		"name": "addVoters",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_title",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_question",
+				"type": "string"
+			},
+			{
+				"internalType": "string[]",
+				"name": "_desc_propositions",
+				"type": "string[]"
+			},
+			{
+				"internalType": "uint64",
+				"name": "_time_begin",
+				"type": "uint64"
+			},
+			{
+				"internalType": "uint64",
+				"name": "_time_end",
+				"type": "uint64"
+			},
+			{
+				"internalType": "string",
+				"name": "_description",
+				"type": "string"
+			}
+		],
+		"name": "createVote",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_vote_id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_proposition_id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_new_proposition",
+				"type": "string"
+			}
+		],
+		"name": "modifyProposition",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_vote_id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_proposition_id",
+				"type": "uint256"
+			}
+		],
+		"name": "removeProposition",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_vote_id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "_voters_id",
+				"type": "uint256[]"
+			}
+		],
+		"name": "removeVoters",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_vote_id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_proposition_id",
+				"type": "uint256"
+			}
+		],
+		"name": "vote",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "withdraw",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getNumberOfVotes",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_vote_id",
+				"type": "uint256"
+			}
+		],
+		"name": "getVote",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "string[]",
+				"name": "",
+				"type": "string[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "address[]",
+				"name": "",
+				"type": "address[]"
+			},
+			{
+				"internalType": "uint64",
+				"name": "",
+				"type": "uint64"
+			},
+			{
+				"internalType": "uint64",
+				"name": "",
+				"type": "uint64"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_vote_id",
+				"type": "uint256"
+			}
+		],
+		"name": "hasVoteBegan",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_vote_id",
+				"type": "uint256"
+			}
+		],
+		"name": "hasVoteFinished",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_vote_id",
+				"type": "uint256"
+			}
+		],
+		"name": "senderCanVote",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_vote_id",
+				"type": "uint256"
+			}
+		],
+		"name": "voteExists",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
